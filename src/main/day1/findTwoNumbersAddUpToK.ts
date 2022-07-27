@@ -9,11 +9,9 @@ export function findTwoNumbersAddUpToK(numbers: number[], k: number): boolean {
     if (numbers.length < 2) {
         return false;
     }
-    for (let left = 0; left < numbers.length - 1; left++) {
-        for(let right = left+1; right <numbers.length; right++){
-            if(numbers[left] + numbers[right] === k){
-                return true;
-            }
+    for (const {leftVal, leftIndex} of numbers.map((item, index) => ({leftVal: item, leftIndex: index}))) {
+        if (numbers.slice(leftIndex + 1).some((rightVal) => rightVal + leftVal === k)) {
+            return true;
         }
     }
     return false;
