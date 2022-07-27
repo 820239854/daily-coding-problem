@@ -6,5 +6,15 @@ Bonus: Can you do this in one pass?
 */
 
 export function findTwoNumbersAddUpToK(numbers: number[], k: number): boolean {
+    if (numbers.length < 2) {
+        return false;
+    }
+    for (let left = 0; left < numbers.length - 1; left++) {
+        for(let right = left+1; right <numbers.length; right++){
+            if(numbers[left] + numbers[right] === k){
+                return true;
+            }
+        }
+    }
     return false;
 }
