@@ -9,14 +9,13 @@ export function findTwoNumbersAddUpToK(numbers: number[], k: number): boolean {
     if (numbers.length < 2) {
         return false;
     }
-    let lookMap = new Map<number, number>();
-    for (let index = 0; index < numbers.length; index++) {
-        let currVal = numbers[index]
-        if (lookMap.has(k - currVal) ) {
+    let lookUpSet = new Set<number>();
+    for (let i=0; i<numbers.length; i++){
+        const currVal = numbers[i];
+        if(lookUpSet.has(k-currVal)){
             return true;
-        }else {
-            lookMap.set(currVal, 0);
         }
+        lookUpSet.add(currVal);
     }
     return false;
 }
